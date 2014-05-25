@@ -12,8 +12,7 @@ function createSceneTuto(engine) {
     //Adding the light to the scene
     var light = new BABYLON.PointLight("Omni", new BABYLON.Vector3(0, 100, 100), scene);
 
-    //Adding an Arc Rotate Camera
-    var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0.8, 100, new BABYLON.Vector3.Zero(), scene);
+    
 
 
     // Basic elements - Parameters are: name, diameter, thickness, tessellation (highly detailed or not), scene, updatable.
@@ -39,6 +38,20 @@ function createSceneTuto(engine) {
     var land = BABYLON.Mesh.CreatePlane("Land", 5000.0, scene);
     land.rotation.x = Math.PI/2;
     
+    var landMaterial = new BABYLON.StandardMaterial("LandTexture", scene);
+    land.material = landMaterial;
+    landMaterial.alpha = 0.5;
+    //materialSphere1.diffuseColor = new BABYLON.Color3(1.0, 0.2, 0.7);
+    landMaterial.diffuseTexture = new BABYLON.Texture("grass_texture.jpg", scene);
+    
+    landMaterial.diffuseTexture.uOffset = 1.5;
+	landMaterial.diffuseTexture.vOffset = 0.5;
+	
+	landMaterial.diffuseTexture.uScale = 125.0;
+	landMaterial.diffuseTexture.vScale = 125.0;
+
+    
+    
     var animationBox = new BABYLON.Animation(
 		"tutoAnimation",
 		"position.x",
@@ -55,23 +68,32 @@ function createSceneTuto(engine) {
 	        value: 0
 	    });
 	
-	    //At the animation key 20, the value of scaling is "0.2"
-	    keys.push({
-	        frame: 20,
-	        value: 20
-	    });
-	
 	    //At the animation key 100, the value of scaling is "1"
 	    keys.push({
 	        frame: 100,
 	        value: 40
 	    });
 	    
-	body.setKeys(keys);
+	    keys.push({
+	        frame: 200,
+	        value: 0
+	    });
+	    
+	    
+	animationBox.setKeys(keys);
 	
 	body.animations.push(animationBox);
 	
-	scene.beginAnimation(body, 0, 100, true);
-
+	scene.beginAnimation(body, 0, 200, true);
+	
+	//Adding an Arc Rotate Camera
+    //var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0.8, 100, new BABYLON.Vector3.Zero(), scene);
+    var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0.8, 200, new BABYLON.Vector3.Zero(), scene);
+    var camera2 = new BABYLON.ArcRotateCamera("Camera2", 0, 0.8, 500, new BABYLON.Vector3.Zero(), scene);
+    scene.activeCameras.push(camera);
+	scene.activeCameras.push(camera2);
+	camera.viewport = new BABYLON.Viewport(0.5, 0, 0.5, 1.0);
+	camera2.viewport = new BABYLON.Viewport(0, 0, 0.5, 1.0);
+	
  return scene;
 }
