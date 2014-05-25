@@ -27,27 +27,27 @@ function createSceneTuto(engine) {
     var materialSphere1 = new BABYLON.StandardMaterial("texture1", scene);
     sphere1.material = materialSphere1;
     materialSphere1.alpha = 0.5;
-    materialSphere1.diffuseColor = new BABYLON.Color3(1.0, 0.2, 0.7);
-    //materialSphere1.diffuseTexture = new BABYLON.Texture("grass_texture.jpg", scene);
+    //materialSphere1.diffuseColor = new BABYLON.Color3(1.0, 0.2, 0.7);
+    materialSphere1.diffuseTexture = new BABYLON.Texture("grass_texture.jpg", scene);
 
     
-    //materialSphere1.diffuseTexture.uOffset = 1.5;
-	//materialSphere1.diffuseTexture.vOffset = 0.5;
+    materialSphere1.diffuseTexture.uOffset = 1.5;
+	materialSphere1.diffuseTexture.vOffset = 0.5;
 	
-	//materialSphere1.diffuseTexture.uScale = 5.0;
-	//materialSphere1.diffuseTexture.vScale = 5.0;
+	materialSphere1.diffuseTexture.uScale = 5.0;
+	materialSphere1.diffuseTexture.vScale = 5.0;
 	
-	//materialSphere1.diffuseTexture.hasAlpha = true;
+	materialSphere1.diffuseTexture.hasAlpha = true;
 	
-	//materialSphere1.emissiveColor = new BABYLON.Color3(1, .2, .7);
+	materialSphere1.emissiveColor = new BABYLON.Color3(1, .2, .7);
 	// materialSphere1.emissiveTexture = new BABYLON.Texture("grass.png", scene); - USE TEXTURE AS EMISSIVE COLOR
 	
-	//materialSphere1.ambientColor = new BABYLON.Color3(1, 0.2, 0.7);
+	materialSphere1.ambientColor = new BABYLON.Color3(1, 0.2, 0.7);
 	//materialSphere1.ambientTexture = new BABYLON.Texture("grass.png", scene); - USE TEXTURE AS AMBIENT COLOR
 	
-	//materialSphere1.specularColor = new BABYLON.Color3(1.0, 0.2, 0.7);
+	materialSphere1.specularColor = new BABYLON.Color3(1.0, 0.2, 0.7);
 	//materialSphere1.specularTexture = new BABYLON.Texture("grass.png", scene); - USE TEXTURE AS SPECULAR COLOR
-	//materialSphere1.specularPower = 32;
+	materialSphere1.specularPower = 32;
     
     materialSphere1.backFaceCulling = false;
 	
